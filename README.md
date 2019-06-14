@@ -1,4 +1,4 @@
-# map
+# Map of Indonesia
 
 ## What to install
 
