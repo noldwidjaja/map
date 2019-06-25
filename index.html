@@ -11,33 +11,32 @@
 <script>
 
 /* JavaScript goes here. */
-var width = 960,
+var width = 1200,
 		height = 1160;
+
+var projection = d3.geo.albers()
+		.center([-150,0])
+		// .rotate([-100,70])
+		.parallels([1,0])
+		.scale(1300)
+		// .translate([width, height]);
+
+var mercator = d3.geo.mercator();
+
+console.log(mercator);
+
+var def= d3.geo.path().projection(projection);
 
 var svg = d3.select("body").append("svg")
 		.attr("width", width)
 		.attr("height", height);
-
-// svg.append("path")
-//     .datum(subunits)
-//     .attr("d", path);
-
-var projection = d3.geo.albers()
-		.center([0, 55.4])
-		.rotate([4.4, 0])
-		.parallels([50, 60])
-		.scale(6000)
-		.translate([width / 2, height / 2]);
-
-var path = d3.geo.path()
-		.projection(projection);
 
 d3.json("indo.json", function(error, indo) {
 	if (error) return console.error(error);
 
 	svg.append("path")
 		.datum(topojson.feature(indo, indo.objects.subunits))
-		.attr("d", d3.geo.path().projection(d3.geo.mercator()));
+		.attr("d", def);
 });
 
 </script>
