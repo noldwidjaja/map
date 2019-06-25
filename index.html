@@ -3,6 +3,7 @@
 <style>
 
 /* CSS goes here. */
+.subunit.IDN { fill : red; }
 
 </style>
 <body>
@@ -16,16 +17,10 @@ var width = 1200,
 
 var projection = d3.geo.albers()
 		.center([-150,0])
-		// .rotate([-100,70])
 		.parallels([1,0])
 		.scale(1300)
-		// .translate([width, height]);
 
-var mercator = d3.geo.mercator();
-
-console.log(mercator);
-
-var def= d3.geo.path().projection(projection);
+var path= d3.geo.path().projection(projection);
 
 var svg = d3.select("body").append("svg")
 		.attr("width", width)
@@ -34,9 +29,11 @@ var svg = d3.select("body").append("svg")
 d3.json("indo.json", function(error, indo) {
 	if (error) return console.error(error);
 
-	svg.append("path")
-		.datum(topojson.feature(indo, indo.objects.subunits))
-		.attr("d", def);
+	svg.selectAll(".subunit")
+		.data(topojson.feature(indo, indo.objects.subunits).features)
+		.enter().append("path")
+		.attr("class", function(d) {return "subunit " + d.id;})
+		.attr("d", path);
 });
 
 </script>

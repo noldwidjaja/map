@@ -3,15 +3,18 @@
 <style>
 
 /* CSS goes here. */
+.subunit.SCT { fill: red; }
+.subunit.WLS { fill: #cdd; }
+.subunit.NIR { fill: #cdc; }
+.subunit.ENG { fill: #dcd; }
+.subunit.IRL { display: none; }
+
 
 </style>
 <body>
 <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="//d3js.org/topojson.v1.min.js"></script>
 <script>
-
-
-// Default
 
 var width = 960,
     height = 1160;
@@ -23,8 +26,6 @@ var projection = d3.geo.albers()
     .scale(1200 * 5)
     .translate([width / 2, height / 2]);
 
-    
-
 var path = d3.geo.path()
     .projection(projection);
 
@@ -33,9 +34,17 @@ var svg = d3.select("body").append("svg")
     .attr("height", height);
 
 d3.json("uk.json", function(error, uk) {
-  svg.append("path")
-      .datum(topojson.feature(uk, uk.objects.subunits))
-      .attr("d", path);
+	svg.selectAll(".subunit")
+		.data(topojson.feature(uk, uk.objects.subunits).features)
+		.enter().append("path")
+		.attr("class", function(d) { return "subunit " + d.id; })
+		.attr("d", path);
 });
 
 </script>
+
+<!-- svg.selectAll(".subunit")
+    .data(topojson.feature(uk, uk.objects.subunits).features)
+  .enter().append("path")
+    .attr("class", function(d) { return "subunit " + d.id; })
+    .attr("d", path); -->
