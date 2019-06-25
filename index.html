@@ -14,7 +14,19 @@
 }
 
 .place {
-	fill: #ffffff;
+	fill: red;
+	opacity: 1;
+}
+
+.place-label {
+	font-size: 16px;
+	opacity: 0;
+	transition: .5s ease;
+	cursor: pointer;
+}
+
+.place-label:hover {
+	opacity: 1;
 }
 
 </style>
@@ -24,13 +36,13 @@
 <script>
 
 /* JavaScript goes here. */
-var width = 1200,
-		height = 900;
+var width = window.innerWidth,
+		height = window.innerHeight;
 
 var projection = d3.geo.albers()
-		.center([-150,0])
+		.center([-153.5,2])
 		.parallels([1,0])
-		.scale(1300)
+		.scale(1800)
 
 var path= d3.geo.path().projection(projection);
 
@@ -45,7 +57,8 @@ d3.json("indo.json", function(error, indo) {
 		.data(topojson.feature(indo, indo.objects.subunits).features)
 		.enter().append("path")
 		.attr("class", function(d) {return "subunit " + d.id;})
-		.attr("d", path);
+		.attr("d", path)
+		.attr("d", path.pointRadius(2));
 
 	// svg.append("path")
 	// 	.datum(topojson.mesh(indo.indo.objects.subunits))
