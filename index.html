@@ -1,84 +1,164 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<style>
+<head>
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300&display=swap" rel="stylesheet">
 
-/* CSS goes here. */
-.subunit.IDN { fill : #ddc; }
-.subunit.MYS { fill: #ccd; }
+  <style>
+    
+    /* CSS goes here. */
+    *{
+      margin: 0;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
 
-.subunit-boundary {
-  fill: none;
-  stroke: #777;
-  stroke-dasharray: 2,2;
-  stroke-linejoin: round;
-}
+    body{
+      background-color: #000006;
+    }
 
-.place {
-	fill: red;
-	opacity: 1;
-}
+    h1, h2{
+      font-size: 2.4em;
+    }
 
-.place-label {
-	font-size: 16px;
-	opacity: 0;
-	transition: .5s ease;
-	cursor: pointer;
-}
+    .background{
+      fill: none;
+      pointer-events: all;
+    }
 
-.place-label:hover {
-	opacity: 1;
-}
+    #subunits {
+      fill: #aaa;
+    }
 
-</style>
+    #info {
+      position: absolute;
+      bottom: 3%;
+      left: 2%;
+      color: #fff;
+      font-family: 'Lato', sans-serif;
+      text-align: left;
+    }
+
+    #subunits .active {
+      fill: orange;
+    }
+
+    #state-borders {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 0.5px;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      pointer-events: none;
+    }
+
+  </style>
+</head>
 <body>
-<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<script src="//d3js.org/topojson.v1.min.js"></script>
-<script>
 
-/* JavaScript goes here. */
-var width = window.innerWidth,
-		height = window.innerHeight;
+  <svg id="map"></svg>
+  <div id="info">
+    <h1 id="area-name">Indonesia</h1>
+    <h2 id="todaysDate"></h2>
+  </div>
 
-var projection = d3.geo.albers()
-		.center([-153.5,2])
-		.parallels([1,0])
-		.scale(1800)
+  <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="//d3js.org/topojson.v1.min.js"></script>
+  <script>
 
-var path= d3.geo.path().projection(projection);
+    /* JavaScript goes here. */
+    var width = 1440,
+    height = 763,
+    centered,
+    bordercolor = "#fff",
+    borderwidth = 0.5;
 
-var svg = d3.select("body").append("svg")
-		.attr("width", width)
-		.attr("height", height);
+    var projection = d3.geo.albers()
+    .center([-153.5,2])
+    .parallels([1,0])
+    .scale(1800);
 
-d3.json("indo.json", function(error, indo) {
-	if (error) return console.error(error);
+    var path = d3.geo.path()
+    .projection(projection);
 
-	svg.selectAll(".subunit")
-		.data(topojson.feature(indo, indo.objects.subunits).features)
-		.enter().append("path")
-		.attr("class", function(d) {return "subunit " + d.id;})
-		.attr("d", path)
-		.attr("d", path.pointRadius(2));
+    var svg = d3.select("#map")
+    .attr("width", width)
+    .attr("height", height);
 
-	// svg.append("path")
-	// 	.datum(topojson.mesh(indo.indo.objects.subunits))
-	// 	.attr("d", path)
-	// 	.attr("class", "subunit-boundary");
-	
-	svg.append("path")
-		.datum(topojson.feature(indo, indo.objects.places))
-		.attr("d", path)
-		.attr("class", "place");
+    svg.append("rect")
+    .attr("class", "background")
+    .attr("width", width)
+    .attr("height", height)
+    .on("click", clicked);
 
-	svg.selectAll(".place-label")
-		.data(topojson.feature(indo, indo.objects.places).features)
-		.enter().append("text")
-		.attr("class", "place-label")
-		.attr("transform", function(d) { return "translate(" + projection(d.geometry.coordinates) + ")"; })
-		.attr("x", function(d) { return d.geometry.coordinates[0] > -1 ? 6 : -6; })
-		.attr("dy", ".35em")
-		.style("text-anchor", function(d) { return d.geometry.coordinates[0] > -1 ? "start" : "end"; })
-		.text(function(d) { return d.properties.name; });
-});
+    var g = svg.append("g");
 
-</script>
+
+    d3.json("indonesia.json", function(error, us) {
+      if (error) throw error;
+
+      g.append("g")
+      .attr("id", "subunits")
+      .selectAll("path")
+      .data(topojson.feature(us, us.objects.IDN_adm_2_kabkota).features)
+      .enter().append("path")
+      .attr("d", path)
+      .on("click", clicked);
+
+      g.append("path")
+      .datum(topojson.mesh(us, us.objects.IDN_adm_2_kabkota, function(a, b) { return a !== b; }))
+      .attr("id", "state-borders")
+      .attr("d", path);
+    });
+
+
+
+    function provinceInfo(region) {
+      return region.properties.NAME_1 + ", " + region.properties.NAME_2;
+    }
+
+    function clicked(d) {
+      var x, y, k;
+
+      if(d) {
+        console.log(d.properties);
+        document.getElementById('area-name').innerHTML = "Indonesia, " + provinceInfo(d);
+      } else {
+        document.getElementById('area-name').innerHTML = "Indonesia";
+      }
+
+      if (d && centered !== d) {
+        var centroid = path.centroid(d);
+        x = centroid[0];
+        y = centroid[1];
+        k = 4;
+        centered = d;
+      } else {
+        x = width / 2;
+        y = height / 2;
+        k = 1;
+        centered = null;
+      }
+
+      g.selectAll("path")
+      .classed("active", centered && function(d) { return d === centered; });
+
+      g.transition()
+      .duration(750)
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+      .style("stroke-width", 1.5 / k + "px");
+    }
+
+    function doDate()
+    {
+      var now = new Date();
+
+      // var str = now.format("YYYY-MM-DDTHH:mm:ss");
+      var str = now.toDateString() + ' ' + now.toLocaleTimeString();
+      document.getElementById("todaysDate").innerHTML = str;
+    }
+
+    setInterval(doDate, 1000);
+
+  </script>
+</body>
