@@ -73,10 +73,16 @@
 
     console.log(width);
 
-    var projection = d3.geo.albers()
-    .center([-160.5,3])
-    .parallels([1,0])
-    .scale(2000);
+    // var projection = d3.geo.albers()
+    // .center([-152.5, 3])
+    // .parallels([1,0])
+    // .scale(1500);
+    // 
+    // 
+    var projection = d3.geo.equirectangular()
+    .scale(1750)
+    .rotate([-118, 2.5])
+    .translate([width / 2, height / 2]);
 
     var path = d3.geo.path()
     .projection(projection);
@@ -147,6 +153,7 @@
       .duration(750)
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
       .style("stroke-width", 1.5 / k + "px");
+      console.log(centroid);
     }
 
     function doDate()
