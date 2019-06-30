@@ -28,13 +28,65 @@
       fill: #aaa;
     }
 
-    #info {
+    #info, #info2, #toggle {
       position: absolute;
-      bottom: 3%;
-      left: 2%;
       color: #fff;
       font-family: 'Lato', sans-serif;
       text-align: left;
+      background-color: rgba(0,0,0,.3);
+      border-radius: 15px;
+      padding: 4px 10px;
+    }
+
+    #info {
+      bottom: 3%;
+      left: 2%;
+    }
+
+    #info2 {
+      top: 3%;
+      right: 2%;
+    }
+
+    #toggle {
+      display: flex;
+      flex-direction: row;
+      bottom: 3%;
+      right: 2%;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #toggle::before {
+      content: "";
+      display: inline-block;
+      height: 12px;
+      width: 12px;
+      border: 2px #fff solid;
+      border-radius: 5px;
+      margin-right: 7px;   
+    }
+
+    #toggle::after {
+      position: absolute;
+      content: "";
+      display: inline-block;
+      height: 6px;
+      width: 12px;
+      border-left: 2px #fff solid;
+      border-bottom: 2px #fff solid;
+      transform: rotate(-45deg);
+      left: 14px;
+      bottom: 23px;
+      display: none;
+    }
+
+    #small-font {
+      font-size: 1.8rem;
+    }
+
+    #info2, #toggle {
+      font-size: .8rem;
     }
 
     #subunits .active {
@@ -58,10 +110,16 @@
   <div id="info">
     <h1 id="area-name">Indonesia</h1>
     <h2 id="todaysDate"></h2>
+    <h2 id="small-font">Luas Daerah : <span id="area">1910931</span></h2>
+  </div>
+  <div id="info2">
     <h2>Total Perolehan Suara:</h2>
     <h2>Pasangan 01 : <span id="number01">84196149</span></h2>
     <h2>Pasangan 02 : <span id="number02">68103806</span></h2>
   </div>
+<!--   <div id="toggle">
+    <h2>Change Color</h2>
+  </div> -->
 
   <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="//d3js.org/topojson.v1.min.js"></script>

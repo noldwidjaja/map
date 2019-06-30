@@ -38,10 +38,18 @@ var pemilu = d3.map();
 
 d3.json("pemilu.json", function(d){
   d.forEach(function(key){
-    var result = [];
     pemilu.set(key.NAME_01, [key.P01, key.P02]);
   })
 });
+
+var area = d3.map();
+
+d3.json("area.json", function(k){
+  k.forEach(function(key){
+    area.set(key.Name_01, key.Area);
+  console.log(area);
+  })
+})
 
 function getColor(d){
   console.log(d);
@@ -86,10 +94,12 @@ function clicked(d) {
     document.getElementById('area-name').innerHTML = "Indonesia, " + provinceInfo(d);
     document.getElementById('number01').innerHTML = pemilu.get(d.properties.NAME_1)[0];
     document.getElementById('number02').innerHTML = pemilu.get(d.properties.NAME_1)[1];
+    document.getElementById('area').innerHTML = area.get(d.properties.NAME_1);
   } else {
     document.getElementById('area-name').innerHTML = "Indonesia";
     document.getElementById('number01').innerHTML = 84196149;
     document.getElementById('number02').innerHTML = 68103806;
+    document.getElementById('area').innerHTML = 1910931;
   }
 
   if (d && centered !== d) {

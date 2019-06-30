@@ -1,138 +1,138 @@
 [
 	{
 		"Name_01" : "Aceh",
-		"Area" : 5795600
+		"Area" : 57956
 	},
 	{
 		"Name_01" : "Sumatera Utara",
-		"Area" : 7298123
+		"Area" : 72981
 	},
 	{
 		"Name_01" : "Sumatera Barat",
-		"Area" : 4201289
+		"Area" : 42012
 	},
 	{
 		"Name_01" : "Riau",
-		"Area" : 8702366
+		"Area" : 87023
 	},
 	{
 		"Name_01" : "Kepulauan Riau",
-		"Area" : 820172
+		"Area" : 8201
 	},
 	{
 		"Name_01" : "Jambi",
-		"Area" : 5005816
+		"Area" : 50058
 	},
 	{
 		"Name_01" : "Sumatera Selatan",
-		"Area" : 9159243
+		"Area" : 91592
 	},
 	{
 		"Name_01" : "Kepulauan Bangka Belitung",
-		"Area" : 1642406
+		"Area" : 16424
 	},
 	{
 		"Name_01" : "Bengkulu",
-		"Area" : 1991933
+		"Area" : 19919
 	},
 	{
 		"Name_01" : "Lampung",
-		"Area" : 3462380
+		"Area" : 34623
 	},
 	{
 		"Name_01" : "Jakarta Raya",
-		"Area" : 66401
+		"Area" : 664
 	},
 	{
 		"Name_01" : "Jawa Barat",
-		"Area" : 3537776
+		"Area" : 35377
 	},
 	{
 		"Name_01" : "Banten",
-		"Area" : 966292
+		"Area" : 9662
 	},
 	{
 		"Name_01" : "Jawa Tengah",
-		"Area" : 3280069
+		"Area" : 32800
 	},
 	{
 		"Name_01" : "DI Yogyakarta",
-		"Area" : 313315
+		"Area" : 3133
 	},
 	{
 		"Name_01" : "Jawa Timur",
-		"Area" : 4779975
+		"Area" : 47799
 	},
 	{
 		"Name_01" : "Bali",
-		"Area" : 578006
+		"Area" : 5780
 	},
 	{
 		"Name_01" : "Nusa Tenggara Barat",
-		"Area" : 1857232
+		"Area" : 18572
 	},
 	{
 		"Name_01" : "Nusa Tenggara Timur",
-		"Area" : 4871810
+		"Area" : 48718
 	},
 	{
 		"Name_01" : "Kalimantan Barat",
-		"Area" : 14730700
+		"Area" : 147307
 	},
 	{
 		"Name_01" : "Kalimantan Tengah",
-		"Area" : 15356450
+		"Area" : 153564
 	},
 	{
 		"Name_01" : "Kalimantan Selatan",
-		"Area" : 3874423
+		"Area" : 38744
 	},
 	{
 		"Name_01" : "Kalimantan Timur",
-		"Area" : 12906664
+		"Area" : 129066
 	},
 	{
 		"Name_01" : "Kalimantan Utara",
-		"Area" : 7546770
+		"Area" : 75467
 	},
 	{
 		"Name_01" : "Sulawesi Utara",
-		"Area" : 1385164
+		"Area" : 13851
 	},
 	{
 		"Name_01" : "Gorontalo",
-		"Area" : 1125707
+		"Area" : 11257
 	},
 	{
 		"Name_01" : "Sulawesi Tengah",
-		"Area" : 6184129
+		"Area" : 61841
 	},
 	{
 		"Name_01" : "Sulawesi Selatan",
-		"Area" : 4671748
+		"Area" : 46717
 	},
 	{
 		"Name_01" : "Sulawesi Barat",
-		"Area" : 1678718
+		"Area" : 16787
 	},
 	{
 		"Name_01" : "Sulawesi Tenggara",
-		"Area" : 3806770
+		"Area" : 38067
 	},
 	{
 		"Name_01" : "Maluku",
-		"Area" : 4691403
+		"Area" : 46914
 	},
 	{
 		"Name_01" : "Maluku Utara",
-		"Area" : 3198250
+		"Area" : 31982
 	},
 	{
 		"Name_01" : "Papua",
-		"Area" : 31903605
+		"Area" : 319036
 	},
 	{
 		"Name_01" : "Papua Barat",
-		"Area" : 9967163
+		"Area" : 99671
 	}
 ]
