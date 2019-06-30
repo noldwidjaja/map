@@ -60,16 +60,15 @@
     #toggle::before {
       content: "";
       display: inline-block;
-      height: 12px;
-      width: 12px;
+      height: 13px;
+      width: 13px;
       border: 2px #fff solid;
       border-radius: 5px;
       margin-right: 7px;   
     }
 
-    #toggle::after {
+    #toggle.none::after, #toggle.checked::after {
       position: absolute;
-      content: "";
       display: inline-block;
       height: 6px;
       width: 12px;
@@ -78,7 +77,13 @@
       transform: rotate(-45deg);
       left: 14px;
       bottom: 23px;
-      display: none;
+    }
+
+    #toggle.none::after {
+      content: none;
+    }
+    #toggle.checked::after {
+      content: "";
     }
 
     #small-font {
@@ -117,9 +122,9 @@
     <h2>Pasangan 01 : <span id="number01">84196149</span></h2>
     <h2>Pasangan 02 : <span id="number02">68103806</span></h2>
   </div>
-<!--   <div id="toggle">
+  <div id="toggle" onclick="toggle()">
     <h2>Change Color</h2>
-  </div> -->
+  </div>
 
   <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="//d3js.org/topojson.v1.min.js"></script>

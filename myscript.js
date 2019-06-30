@@ -47,12 +47,10 @@ var area = d3.map();
 d3.json("area.json", function(k){
   k.forEach(function(key){
     area.set(key.Name_01, key.Area);
-  console.log(area);
   })
 })
 
 function getColor(d){
-  console.log(d);
   return blue;
 }
 
@@ -64,15 +62,7 @@ d3.json("indonesia.json", function(error, us) {
   .selectAll("path")
   .data(topojson.feature(us, us.objects.IDN_adm_2_kabkota).features)
   .enter().append("path")
-  .attr("fill", function(d) {
-    console.log(d.properties.NAME_1);
-    var key = d.properties.NAME_1,
-    S01 = pemilu.get(key)[0],
-    S02 = pemilu.get(key)[1],
-    color = "";
-    (S01 < S02) ? color = pink : color = blue;
-    return color;
-  })
+  .attr("fill", "#aaa")
   .attr("d", path)
   .on("click", clicked);
 
@@ -82,8 +72,30 @@ d3.json("indonesia.json", function(error, us) {
   .attr("d", path);
 });
 
+function pemiluColor(d) {
+  var key = d.properties.NAME_1,
+  S01 = pemilu.get(key)[0],
+  S02 = pemilu.get(key)[1],
+  color = "";
+  (S01 < S02) ? color = pink : color = blue;
+  return color;
+}
+
 function provinceInfo(region) {
   return region.properties.NAME_1 + ", " + region.properties.NAME_2;
+}
+
+function toggle() {
+  var toggle = document.getElementById('toggle');
+
+  if (toggle.classList.contains("none")) {
+    toggle.className = "checked";
+     g.selectAll("path").attr("fill", pemiluColor);
+  }
+  else {
+    toggle.className = "none"; 
+     g.selectAll("path").attr("fill", "#aaa");
+  }
 }
 
 function clicked(d) {
