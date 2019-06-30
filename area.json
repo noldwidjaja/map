@@ -1,0 +1,138 @@
+[
+	{
+		"Name_01" : "Aceh",
+		"Area" : 5795600
+	},
+	{
+		"Name_01" : "Sumatera Utara",
+		"Area" : 7298123
+	},
+	{
+		"Name_01" : "Sumatera Barat",
+		"Area" : 4201289
+	},
+	{
+		"Name_01" : "Riau",
+		"Area" : 8702366
+	},
+	{
+		"Name_01" : "Kepulauan Riau",
+		"Area" : 820172
+	},
+	{
+		"Name_01" : "Jambi",
+		"Area" : 5005816
+	},
+	{
+		"Name_01" : "Sumatera Selatan",
+		"Area" : 9159243
+	},
+	{
+		"Name_01" : "Kepulauan Bangka Belitung",
+		"Area" : 1642406
+	},
+	{
+		"Name_01" : "Bengkulu",
+		"Area" : 1991933
+	},
+	{
+		"Name_01" : "Lampung",
+		"Area" : 3462380
+	},
+	{
+		"Name_01" : "Jakarta Raya",
+		"Area" : 66401
+	},
+	{
+		"Name_01" : "Jawa Barat",
+		"Area" : 3537776
+	},
+	{
+		"Name_01" : "Banten",
+		"Area" : 966292
+	},
+	{
+		"Name_01" : "Jawa Tengah",
+		"Area" : 3280069
+	},
+	{
+		"Name_01" : "DI Yogyakarta",
+		"Area" : 313315
+	},
+	{
+		"Name_01" : "Jawa Timur",
+		"Area" : 4779975
+	},
+	{
+		"Name_01" : "Bali",
+		"Area" : 578006
+	},
+	{
+		"Name_01" : "Nusa Tenggara Barat",
+		"Area" : 1857232
+	},
+	{
+		"Name_01" : "Nusa Tenggara Timur",
+		"Area" : 4871810
+	},
+	{
+		"Name_01" : "Kalimantan Barat",
+		"Area" : 14730700
+	},
+	{
+		"Name_01" : "Kalimantan Tengah",
+		"Area" : 15356450
+	},
+	{
+		"Name_01" : "Kalimantan Selatan",
+		"Area" : 3874423
+	},
+	{
+		"Name_01" : "Kalimantan Timur",
+		"Area" : 12906664
+	},
+	{
+		"Name_01" : "Kalimantan Utara",
+		"Area" : 7546770
+	},
+	{
+		"Name_01" : "Sulawesi Utara",
+		"Area" : 1385164
+	},
+	{
+		"Name_01" : "Gorontalo",
+		"Area" : 1125707
+	},
+	{
+		"Name_01" : "Sulawesi Tengah",
+		"Area" : 6184129
+	},
+	{
+		"Name_01" : "Sulawesi Selatan",
+		"Area" : 4671748
+	},
+	{
+		"Name_01" : "Sulawesi Barat",
+		"Area" : 1678718
+	},
+	{
+		"Name_01" : "Sulawesi Tenggara",
+		"Area" : 3806770
+	},
+	{
+		"Name_01" : "Maluku",
+		"Area" : 4691403
+	},
+	{
+		"Name_01" : "Maluku Utara",
+		"Area" : 3198250
+	},
+	{
+		"Name_01" : "Papua",
+		"Area" : 31903605
+	},
+	{
+		"Name_01" : "Papua Barat",
+		"Area" : 9967163
+	}
+]
