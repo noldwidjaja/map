@@ -65,16 +65,18 @@
   <script>
 
     /* JavaScript goes here. */
-    var width = 1440,
-    height = 763,
+    var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0),
+    height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
     centered,
     bordercolor = "#fff",
     borderwidth = 0.5;
 
+    console.log(width);
+
     var projection = d3.geo.albers()
-    .center([-153.5,2])
+    .center([-160.5,3])
     .parallels([1,0])
-    .scale(1800);
+    .scale(2000);
 
     var path = d3.geo.path()
     .projection(projection);
