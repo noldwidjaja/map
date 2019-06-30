@@ -84,8 +84,12 @@ function clicked(d) {
   if(d) {
     console.log(d.properties);
     document.getElementById('area-name').innerHTML = "Indonesia, " + provinceInfo(d);
+    document.getElementById('number01').innerHTML = pemilu.get(d.properties.NAME_1)[0];
+    document.getElementById('number02').innerHTML = pemilu.get(d.properties.NAME_1)[1];
   } else {
     document.getElementById('area-name').innerHTML = "Indonesia";
+    document.getElementById('number01').innerHTML = 84196149;
+    document.getElementById('number02').innerHTML = 68103806;
   }
 
   if (d && centered !== d) {
